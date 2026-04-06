@@ -1,15 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { Wallet, TrendingUp, Plus, Package, Trash2 } from 'lucide-react';
+import { Wallet, TrendingUp, Plus, Package, Trash2, FileDown } from 'lucide-react';
 import api from '../api';
+import { useAuth } from '../context/AuthContext';
 import StatCard from '../components/StatCard';
 import AddAssetModal from '../components/AddAssetModal';
+import { generateBilanPdf } from '../services/exportPdf';
 
 function formatEur(n) {
   return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n);
 }
 
 export default function Dashboard() {
+  const { user } = useAuth();
   const [assets, setAssets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -64,13 +67,24 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold text-white">Dashboard</h1>
           <p className="text-sm text-slate-400 mt-1">Vue d'ensemble de votre patrimoine</p>
         </div>
-        <button
-          onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors"
-        >
-          <Plus className="w-4 h-4" />
-          Ajouter un actif
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => generateBilanPdf(assets, user?.email)}
+            disabled={assets.length === 0}
+            className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-600 disabled:cursor-not-allowed text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors"
+            title={assets.length === 0 ? 'Ajoutez des actifs pour generer un bilan' : ''}
+          >
+            <FileDown className="w-4 h-4" />
+            Generer mon Bilan (PDF)
+          </button>
+          <button
+            onClick={() => setShowModal(true)}
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors"
+          >
+            <Plus className="w-4 h-4" />
+            Ajouter un actif
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
