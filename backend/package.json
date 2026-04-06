@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node --watch server.js",
+    "dev": "node --watch --watch-path=./server.js --watch-path=./database.js server.js",
     "start": "node server.js"
   },
   "dependencies": {

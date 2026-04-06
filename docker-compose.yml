@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - JWT_SECRET=change-me-in-production
+      - CORS_ORIGIN=http://localhost
+      - DB_PATH=/app/data/patrimonia.db
+    volumes:
+      - db-data:/app/data
+    expose:
+      - "3001"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  db-data:

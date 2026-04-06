@@ -8,27 +8,23 @@ Application de gestion de patrimoine personnel.
 - **Backend** : Node.js, Express 5, SQLite (better-sqlite3), JWT, bcryptjs
 - **Auth** : JWT Bearer tokens (7 jours d'expiration)
 
-## Installation
+## Demarrage avec Docker (recommande)
 
 ```bash
-# Cloner le projet
-git clone <repo-url>
-cd patrimonia
-
-# Installer les dependances frontend
-npm install
-
-# Installer les dependances backend
-cd backend
-npm install
-cd ..
+docker compose up --build
 ```
 
-## Demarrage
+Ouvrir http://localhost dans le navigateur. C'est tout.
 
-Ouvrir deux terminaux :
+Les donnees SQLite sont persistees dans un volume Docker (`db-data`).
+
+## Demarrage sans Docker (dev)
 
 ```bash
+# Installer les dependances
+npm install
+cd backend && npm install && cd ..
+
 # Terminal 1 — Backend (port 3001)
 cd backend
 npm run dev
@@ -61,7 +57,11 @@ patrimonia/
 ├── backend/
 │   ├── server.js               # API Express
 │   ├── database.js             # Schema SQLite + seed categories
+│   ├── Dockerfile              # Image backend Node.js
 │   └── package.json
+├── Dockerfile                  # Image frontend (build + nginx)
+├── docker-compose.yml          # Orchestration des services
+├── nginx.conf                  # Reverse proxy + SPA routing
 ├── package.json
 └── README.md
 ```

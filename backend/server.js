@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'patrimonia-dev-secret-change-in-production';
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:5173' }));
 app.use(express.json());
 
 // Health check
