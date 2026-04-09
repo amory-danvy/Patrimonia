@@ -9,7 +9,7 @@ Application de gestion de patrimoine personnel.
 - **Auth** : JWT Bearer tokens (7 jours d'expiration)
 
 ## Demarrage avec Docker (recommande)
-
+Télécharger Docker
 ```bash
 docker compose up --build
 ```
