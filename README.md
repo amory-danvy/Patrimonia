@@ -48,6 +48,10 @@ docker compose up --build
 
 Au premier lancement, le téléchargement et la construction prennent quelques minutes. Patientez jusqu'à voir le message indiquant que les services sont prêts.
 
+Si le téléchargements échoue et affiche une erreur come :
+failed to solve /bin/sh -c apk --no-cache python3 make g++ exit code 3
+Il est préférable, d'utiliser un partage de connexion si vous vous situez dans un établissement scolairen le par-feux pouvant empéchez l'installation
+
 ### Étape 5 — Ouvrir l'application
 
 Dans votre navigateur, allez sur : **http://localhost**
