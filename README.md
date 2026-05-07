@@ -4,6 +4,8 @@ Application de gestion de patrimoine personnel.
 
 ## Installation pas à pas (avec Docker)
 
+Docker est un outil qui empaquette une application avec tout ce dont elle a besoin pour fonctionner (code, dépendances, base de données, serveur web) dans des « conteneurs » isolés. Concrètement, ça permet de lancer Patrimonia avec une seule commande, sans installer Node.js, SQLite ou Nginx manuellement, et avec la garantie que ça fonctionnera de la même façon sur n'importe quel ordinateur.
+
 C'est la méthode recommandée. Suivez les étapes dans l'ordre.
 
 ### Étape 1 — Installer Docker Desktop
@@ -20,13 +22,15 @@ Une fois téléchargé :
 1. Lancez l'installeur et suivez les instructions.
 2. Redémarrez l'ordinateur si demandé.
 3. Ouvrez Docker Desktop et attendez que l'icône passe au vert (en bas à gauche).
+4. Télécharger ou mettez a jour le sous système Linux pour windows (WSL)
+5. Sur le logiciel Docker appuyez en haut a droite sur le bouton skip
 
 ### Étape 2 — Télécharger le code du projet
 
-1. Allez sur la page du projet : `<URL_DU_DEPOT>`
+1. Retournez sur la page github du projet
 2. Cliquez sur le bouton vert **« Code »**, puis sur **« Download ZIP »**.
-3. Une fois le fichier `.zip` téléchargé, faites un clic droit dessus et choisissez **« Extraire tout… »** (Windows) ou double-cliquez (macOS).
-4. Vous obtenez un dossier `patrimonia` (ou `patrimonia-main`). Déplacez-le où vous voulez, par exemple sur votre Bureau.
+3. Décompressez l'archive ZIP téléchargée.
+4. Vous obtenez un dossier `patrimonia` ou `patrimonia-main`. Déplacez-le où vous voulez, par exemple sur votre Bureau.
 
 ### Étape 3 — Ouvrir un terminal dans ce dossier
 
@@ -47,8 +51,6 @@ Au premier lancement, le téléchargement et la construction prennent quelques m
 ### Étape 5 — Ouvrir l'application
 
 Dans votre navigateur, allez sur : **http://localhost**
-
-C'est tout, l'application est prête à être utilisée.
 
 ### Pour arrêter l'application
 
