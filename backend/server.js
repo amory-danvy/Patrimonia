@@ -3,6 +3,10 @@ import cors from 'cors';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import db from './database.js';
+import { seedDemoData } from './seed.js';
+
+// Au premier lancement, crée les comptes démo si la base est vide.
+seedDemoData();
 
 const app = express();
 const PORT = 3001;
